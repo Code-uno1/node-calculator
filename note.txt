@@ -1,0 +1,3 @@
+what is process, i read they say it's a module. and what does process do? y
+
+what do they mean by this "Note: process does not need to be imported, it is a global object in Node.js." what is a global object in node, like what does it mean for something to be global?  and examples of global "things"?
