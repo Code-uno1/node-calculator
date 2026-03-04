@@ -1,38 +1,99 @@
-const readline = require('node:readline');
+const readline = require('readline');
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
 
-console.log("Hello welcome to my calculator!")
+console.log("Hello welcome to the Calculator")
 
-rl.question(`What's you name?`, name => {
-  console.log(`Hi ${name}!`);
-});
+rl.question(
+  "Choose operation (add, sub, mult, div): ",
+  (operation) => {
 
-rl.questionMath(`What addition would you like to perfom; add(addition)\nsub(subtraction)\nmult(multiplication)\ndiv(division)`);
+    // Step 2: Ask first number 
+    rl.question("Enter first number: ", (num1) => {
 
-rl.number1(`What's the first number`);
-rl.number2(`What's the second number`);
+      // Step 3: Ask second number 
+      rl.question("Enter second number: ", (num2) => {
 
+        // Convert strings to numbers 
+        const number1 = Number(num1);
+        const number2 = Number(num2);
 
-if (questionMath.toLowerCase() == 'add') {
-  const answer = number1 + number2;
-  console.log(answer);
-} else if (questionMath.toLowerCase() == 'sub') {
-  const answer = number1 - number2;
-  console.log(answer);
-} else if (questionMath.toLowerCase() == 'mult') {
-  const answer = number1 * number2;
-  console.log(answer);
-} else if (questionMath.toLowerCase() == 'div') {
-  if (number1 && number2 <1 ) {
-    console.log("The numbers must be greater than 1!")
+        let result;
+
+        // Step 4: Perform operation 
+        if (operation.toLowerCase() === "add") {
+          result = number1 + number2;
+        } else if (operation.toLowerCase() === "sub") {
+          result = number1 - number2;
+        } else if (operation.toLowerCase() === "mult") {
+          result = number1 * number2;
+        } else if (operation.toLowerCase() === "div") {
+
+          if (number2 === 0) {
+            console.log("Cannot divide by zero.");
+            rl.close();
+            return;
+          }
+
+          result = number1 / number2;
+
+        } else {
+          console.log("Invalid operation.");
+          rl.close();
+          return;
+        }
+
+        console.log("Result:", result);
+
+        rl.close(); // Always close interface 
+      });
+    });
   }
-  const answer = number1 / number2;
-  console.log(answer)
-} else {
-  console.log("Invalid input");
-}
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
